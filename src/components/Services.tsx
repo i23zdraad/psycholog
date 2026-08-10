@@ -68,8 +68,28 @@ const servicesData = [
 
 export default function Services() {
   return (
-    <section id="sluzby" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', background: '#070707' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
+    <section id="sluzby" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', background: '#070707', overflow: 'hidden' }}>
+      {/* Subtle background glow */}
+      <div style={{
+        position: 'absolute',
+        top: '10%',
+        right: '-10%',
+        width: '500px',
+        height: '500px',
+        background: 'radial-gradient(circle, rgba(74,144,164,0.04) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '5%',
+        left: '-10%',
+        width: '400px',
+        height: '400px',
+        background: 'radial-gradient(circle, rgba(46,90,124,0.04) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)', position: 'relative', zIndex: 1 }}>
         <FadeIn>
           <span style={{
             fontSize: '12px', fontWeight: 400,
