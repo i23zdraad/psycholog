@@ -25,8 +25,21 @@ export default function Contact() {
     setTimeout(() => setFormStatus(''), 5000)
   }
 
+  const inputStyle = {
+    width: '100%',
+    background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    borderRadius: '12px',
+    padding: '14px 16px',
+    color: '#fff',
+    fontSize: '14px',
+    fontFamily: "'Inter', sans-serif",
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
+  }
+
   return (
-    <section id="kontakt" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0 60px', background: '#0a0a0a' }}>
+    <section id="kontakt" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', background: '#070707' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
         <FadeIn>
           <span style={{
@@ -53,86 +66,78 @@ export default function Contact() {
           </h2>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ marginTop: 'clamp(40px, 5vw, 60px)', gap: 'clamp(32px, 4vw, 60px)' }}>
-          {/* Left: Info */}
-          <FadeIn delay={0.15}>
-            <div className="flex flex-col" style={{ gap: '28px' }}>
-              <div>
-                <div style={{
-                  fontSize: '11px', fontWeight: 500,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.30)',
-                  marginBottom: '10px',
+        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ marginTop: 'clamp(40px, 5vw, 60px)', gap: 'clamp(32px, 4vw, 56px)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <FadeIn delay={0.15}>
+              <div className="glass" style={{ borderRadius: '20px', padding: 'clamp(24px, 2.5vw, 32px)' }}>
+                <h3 style={{
+                  margin: '0 0 12px',
+                  fontFamily: "'Hanken Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: '16px',
+                  color: '#fff',
                 }}>
                   Adresa pracovny
-                </div>
-                <div style={{
-                  fontSize: 'clamp(14px, 1.1vw, 16px)',
+                </h3>
+                <p style={{
+                  fontSize: '14px',
                   lineHeight: 1.7,
-                  color: 'rgba(255,255,255,0.65)',
+                  color: 'rgba(255,255,255,0.55)',
+                  margin: 0,
                 }}>
                   Nádražní 238/7, Vyškov<br />
                   budova Central, 3. patro, dveře č. 363
-                </div>
+                </p>
               </div>
+            </FadeIn>
 
-              <div>
-                <div style={{
-                  fontSize: '11px', fontWeight: 500,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.30)',
-                  marginBottom: '10px',
-                }}>
-                  E-mail
-                </div>
-                <a
-                  href="mailto:zdrahalova.michaela@gmail.com"
-                  className="text-white/65 hover:text-white/90 transition-colors"
-                  style={{
-                    fontSize: 'clamp(14px, 1.1vw, 16px)',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid rgba(255,255,255,0.12)',
-                    paddingBottom: '2px',
-                  }}
-                >
-                  zdrahalova.michaela@gmail.com
-                </a>
-                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.30)', marginTop: '6px' }}>
-                  Na e-maily se snažím odpovědět do týdne.
-                </div>
-              </div>
-
-              <div>
-                <div style={{
-                  fontSize: '11px', fontWeight: 500,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.30)',
-                  marginBottom: '10px',
+            <FadeIn delay={0.2}>
+              <div className="glass" style={{ borderRadius: '20px', padding: 'clamp(24px, 2.5vw, 32px)' }}>
+                <h3 style={{
+                  margin: '0 0 12px',
+                  fontFamily: "'Hanken Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: '16px',
+                  color: '#fff',
                 }}>
                   Komunikuji přes
-                </div>
-                <div className="flex flex-wrap" style={{ gap: '10px' }}>
-                  {['Skype', 'WhatsApp', 'Google Meet'].map((app) => (
+                </h3>
+                <div className="flex flex-wrap" style={{ gap: '8px' }}>
+                  {['Skype', 'WhatsApp', 'Google Meet', 'Telefon'].map((app) => (
                     <span key={app} style={{
-                      fontSize: '13px', color: 'rgba(255,255,255,0.50)',
+                      fontSize: '13px',
+                      color: 'rgba(255,255,255,0.60)',
+                      background: 'rgba(255,255,255,0.04)',
                       border: '1px solid rgba(255,255,255,0.08)',
-                      padding: '5px 12px', borderRadius: '999px',
+                      padding: '6px 14px',
+                      borderRadius: '999px',
                     }}>
                       {app}
                     </span>
                   ))}
                 </div>
               </div>
+            </FadeIn>
 
-              <div>
-                <div style={{
-                  fontSize: '11px', fontWeight: 500,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.30)',
-                  marginBottom: '10px',
+            <FadeIn delay={0.25}>
+              <div className="glass" style={{ borderRadius: '20px', padding: 'clamp(24px, 2.5vw, 32px)' }}>
+                <h3 style={{
+                  margin: '0 0 12px',
+                  fontFamily: "'Hanken Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: '16px',
+                  color: '#fff',
                 }}>
                   Rezervace
-                </div>
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  lineHeight: 1.7,
+                  color: 'rgba(255,255,255,0.55)',
+                  margin: '0 0 16px',
+                }}>
+                  Nejsnazší cesta k termínu je přes online rezervaci na ZnamyLekar.cz
+                </p>
                 <motion.a
                   href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
                   target="_blank"
@@ -141,183 +146,97 @@ export default function Contact() {
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex items-center text-white"
                   style={{
-                    padding: '12px 26px', borderRadius: '999px',
-                    fontSize: '14px', fontWeight: 400,
+                    padding: '12px 24px',
+                    borderRadius: '999px',
+                    fontSize: '14px',
+                    fontWeight: 400,
                     textDecoration: 'none',
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.35)',
-                    backdropFilter: 'blur(6px)',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.30)',
                   }}
                 >
                   Objednat se online
                 </motion.a>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
 
-          {/* Right: Form */}
-          <FadeIn delay={0.25}>
-            <form
-              onSubmit={handleSubmit}
-              className="glass"
-              style={{
-                borderRadius: '20px',
-                padding: 'clamp(28px, 3vw, 40px)',
-              }}
-            >
+          <FadeIn delay={0.2}>
+            <form onSubmit={handleSubmit} className="glass" style={{
+              borderRadius: '20px',
+              padding: 'clamp(24px, 2.5vw, 32px)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '16px',
+            }}>
               <h3 style={{
+                margin: '0 0 4px',
                 fontFamily: "'Hanken Grotesk', sans-serif",
                 fontWeight: 500,
-                fontSize: 'clamp(17px, 1.4vw, 20px)',
+                fontSize: '18px',
                 color: '#fff',
-                marginBottom: '24px',
-                letterSpacing: '-0.01em',
               }}>
                 Napište mi
               </h3>
-
-              <div style={{ marginBottom: '18px' }}>
-                <label style={{
-                  display: 'block', fontSize: '12px',
-                  color: 'rgba(255,255,255,0.45)',
-                  marginBottom: '6px',
-                }}>
-                  Jméno
-                </label>
-                <input
-                  type="text"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '11px 14px',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '10px',
-                    color: '#fff',
-                    fontSize: '14px',
-                    fontFamily: "'Inter', sans-serif",
-                    outline: 'none',
-                    transition: 'border-color 0.2s ease',
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '18px' }}>
-                <label style={{
-                  display: 'block', fontSize: '12px',
-                  color: 'rgba(255,255,255,0.45)',
-                  marginBottom: '6px',
-                }}>
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '11px 14px',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '10px',
-                    color: '#fff',
-                    fontSize: '14px',
-                    fontFamily: "'Inter', sans-serif",
-                    outline: 'none',
-                    transition: 'border-color 0.2s ease',
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '22px' }}>
-                <label style={{
-                  display: 'block', fontSize: '12px',
-                  color: 'rgba(255,255,255,0.45)',
-                  marginBottom: '6px',
-                }}>
-                  Zpráva
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  style={{
-                    width: '100%',
-                    padding: '11px 14px',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '10px',
-                    color: '#fff',
-                    fontSize: '14px',
-                    fontFamily: "'Inter', sans-serif",
-                    outline: 'none',
-                    resize: 'vertical',
-                    transition: 'border-color 0.2s ease',
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
-                />
-              </div>
-
+              <input
+                type="text"
+                placeholder="Jméno"
+                required
+                style={inputStyle}
+                onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
+              />
+              <input
+                type="email"
+                placeholder="E-mail"
+                required
+                style={inputStyle}
+                onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
+              />
+              <textarea
+                placeholder="Zpráva"
+                rows={5}
+                required
+                style={{ ...inputStyle, resize: 'vertical' }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
+              />
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02, background: 'rgba(255,255,255,0.12)' }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full text-white"
+                whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+                whileTap={{ scale: 0.97 }}
                 style={{
-                  padding: '13px',
+                  alignSelf: 'flex-start',
+                  padding: '12px 28px',
                   borderRadius: '999px',
-                  fontSize: '14px', fontWeight: 400,
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.35)',
+                  fontSize: '14px',
+                  fontWeight: 400,
+                  color: '#fff',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.25)',
                   cursor: 'pointer',
                   fontFamily: "'Inter', sans-serif",
                 }}
               >
                 Odeslat zprávu
               </motion.button>
-
               {formStatus && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   style={{
-                    marginTop: '14px',
-                    fontSize: '13px',
-                    color: 'rgba(255,255,255,0.65)',
-                    textAlign: 'center',
+                    fontSize: '14px',
+                    color: 'rgba(255,255,255,0.60)',
+                    margin: 0,
                   }}
                 >
                   {formStatus}
-                </motion.div>
+                </motion.p>
               )}
             </form>
           </FadeIn>
         </div>
-
-        {/* Map */}
-        <FadeIn delay={0.35}>
-          <div style={{
-            marginTop: 'clamp(40px, 5vw, 60px)',
-            borderRadius: '20px',
-            overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.05)',
-            height: 'clamp(280px, 35vw, 380px)',
-          }}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.0!2d17.0!3d49.277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDE2JzM3LjIiTiAxN8KwMDAnMDAuMCJF!5e0!3m2!1scs!2scz!4v1"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'grayscale(40%) contrast(1.1) brightness(0.7)' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa ordinace Michaela Zdráhalová"
-            />
-          </div>
-        </FadeIn>
       </div>
     </section>
   )

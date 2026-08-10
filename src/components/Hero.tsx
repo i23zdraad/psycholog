@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion'
+import { ArrowDown, Calendar, Phone } from 'lucide-react'
+
+const BOOKING_URL = 'https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid='
 
 export default function Hero() {
   return (
@@ -12,8 +15,8 @@ export default function Hero() {
         playsInline
       />
       {/* Overlays */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.10) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, transparent 30%, transparent 65%, rgba(0,0,0,0.35) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.10) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, transparent 30%, transparent 65%, rgba(0,0,0,0.50) 100%)' }} />
       <div style={{ position: 'absolute', top: '-10%', left: '5%', width: '700px', height: '700px', background: 'radial-gradient(ellipse at 30% 30%, rgba(74,144,164,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
       {/* Headline block */}
@@ -77,41 +80,69 @@ export default function Hero() {
           </span>
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.45, ease: 'easeOut' }}
+          style={{
+            marginTop: '20px',
+            fontSize: 'clamp(14px, 1.2vw, 17px)',
+            lineHeight: 1.6,
+            color: 'rgba(255,255,255,0.55)',
+            maxWidth: '480px',
+            textShadow: '0 1px 12px rgba(0,0,0,0.5)',
+          }}
+        >
+          Od roku 2009 pomáhám lidem nacházet cestu k sobě. 
+          Individuální terapie, párové konzultace i práce s rodinou — 
+          ve Vyškově i online.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay: 0.55, ease: 'easeOut' }}
           className="flex flex-wrap items-center"
-          style={{ gap: '16px', marginTop: '32px' }}
+          style={{ gap: '14px', marginTop: '36px' }}
         >
           <motion.a
-            href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+            whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center text-white"
+            className="btn-primary inline-flex items-center gap-2"
             style={{
-              padding: '13px 28px',
+              padding: '14px 32px',
+              borderRadius: '999px',
+              fontSize: 'clamp(13px, 1.1vw, 15px)',
+              fontWeight: 500,
+              textDecoration: 'none',
+            }}
+          >
+            <Calendar size={17} />
+            Objednat se online
+          </motion.a>
+          <motion.a
+            href="#kontakt"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#kontakt')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="btn-secondary inline-flex items-center gap-2"
+            style={{
+              padding: '14px 32px',
               borderRadius: '999px',
               fontSize: 'clamp(13px, 1.1vw, 15px)',
               fontWeight: 400,
               textDecoration: 'none',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.35)',
-              backdropFilter: 'blur(6px)',
-              WebkitBackdropFilter: 'blur(6px)',
             }}
           >
-            Objednat se
+            <Phone size={17} />
+            Napište mi
           </motion.a>
-          <a
-            href="#cenik"
-            className="text-white/80 hover:text-white transition-colors"
-            style={{ fontSize: 'clamp(13px, 1.1vw, 15px)', fontWeight: 400, textDecoration: 'none' }}
-          >
-            Ceník
-          </a>
         </motion.div>
       </div>
 
@@ -135,9 +166,20 @@ export default function Hero() {
         <p className="hidden md:block" style={{ margin: 0, maxWidth: '400px', fontSize: '12.5px', lineHeight: 1.55, color: 'rgba(255,255,255,0.55)', textAlign: 'center', textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}>
           Individuální terapie, párové poradenství, práce s rodinou i koučink. Osobně ve Vyškově nebo online.
         </p>
-        <span className="hidden lg:block" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', whiteSpace: 'nowrap', textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}>
-          [Posuňte dolů]
-        </span>
+        <motion.a
+          href="#o-mne"
+          onClick={(e) => {
+            e.preventDefault()
+            document.querySelector('#o-mne')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="hidden lg:flex flex-col items-center gap-1"
+          style={{ textDecoration: 'none' }}
+        >
+          <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>Scroll</span>
+          <ArrowDown size={16} color="rgba(255,255,255,0.4)" />
+        </motion.a>
       </motion.div>
     </section>
   )

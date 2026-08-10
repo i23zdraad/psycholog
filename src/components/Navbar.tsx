@@ -1,120 +1,162 @@
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
 
 const navLinks = [
   { label: 'O mně', href: '#o-mne' },
+  { label: 'Proč ke mně', href: '#proc-ke-mne' },
   { label: 'Služby', href: '#sluzby' },
-  { label: 'Recenze', href: '#recenze' },
   { label: 'Ceník', href: '#cenik' },
+  { label: 'Recenze', href: '#recenze' },
   { label: 'Kontakt', href: '#kontakt' },
 ]
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const scrollTo = (e: React.MouseEvent, href: string) => {
     e.preventDefault()
+    if (href === '#') window.scrollTo({ top: 0, behavior: 'smooth' })
+    else document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
     setMobileOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <>
-      <motion.nav
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
-        style={{ padding: '20px 24px' }}
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background: scrolled ? 'rgba(0,0,0,0.65)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+        transition: 'all 0.35s ease',
+      }}
+    >
+      <div
+        className="flex items-center justify-between"
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 clamp(20px, 6vw, 80px)',
+          height: '64px',
+        }}
       >
-        {/* Logo */}
-        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="flex items-center gap-2.5" style={{ textDecoration: 'none' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.6 4.1 A8 8 0 1 0 19.9 15.4 A6.2 6.2 0 1 1 15.6 4.1 Z" fill="#fff" />
-          </svg>
-          <span style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#fff' }}>
-            M. Zdráhalová
-          </span>
+        <a
+          href="#"
+          onClick={(e) => scrollTo(e, '#')}
+          className="text-white"
+          style={{
+            fontFamily: "'Hanken Grotesk', sans-serif",
+            fontSize: '16px',
+            fontWeight: 500,
+            letterSpacing: '-0.01em',
+            textDecoration: 'none',
+          }}
+        >
+          M. Zdráhalová
         </a>
 
-        {/* Desktop Center links */}
-        <div className="hidden lg:flex items-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', gap: '32px' }}>
+        <div className="hidden md:flex items-center" style={{ gap: '24px' }}>
           {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.href}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className="flex items-center gap-1.5 text-white/80 hover:text-white transition-colors duration-200"
-              style={{ fontSize: '14px', fontWeight: 400, textDecoration: 'none', whiteSpace: 'nowrap' }}
+              className="text-white/60 hover:text-white transition-colors"
+              style={{
+                fontFamily: "'Hanken Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: 400,
+                textDecoration: 'none',
+              }}
             >
               {link.label}
             </a>
           ))}
-        </div>
-
-        {/* Desktop Right */}
-        <div className="hidden lg:flex items-center" style={{ gap: '18px' }}>
           <motion.a
             href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.12)' }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center text-white"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            className="text-white"
             style={{
-              padding: '10px 22px', borderRadius: '999px',
-              fontSize: '14px', fontWeight: 400,
+              padding: '8px 18px',
+              borderRadius: '999px',
+              fontSize: '13px',
+              fontWeight: 500,
               textDecoration: 'none',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.35)',
-              backdropFilter: 'blur(6px)',
-              WebkitBackdropFilter: 'blur(6px)',
-              whiteSpace: 'nowrap',
+              background: 'rgba(255,255,255,0.10)',
+              border: '1px solid rgba(255,255,255,0.30)',
+              backdropFilter: 'blur(4px)',
             }}
           >
             Objednat se
           </motion.a>
         </div>
 
-        {/* Mobile hamburger */}
         <button
-          className="lg:hidden flex flex-col justify-center items-center gap-1.5"
-          style={{ width: '32px', height: '32px', background: 'none', border: 'none', cursor: 'pointer' }}
+          className="md:hidden text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         >
-          <span className="block bg-white/80" style={{ width: '22px', height: '1.5px', borderRadius: '2px', transition: 'all 0.3s', transform: mobileOpen ? 'rotate(45deg) translateY(4.5px)' : 'none' }} />
-          <span className="block bg-white/80" style={{ width: '22px', height: '1.5px', borderRadius: '2px', transition: 'all 0.3s', opacity: mobileOpen ? 0 : 1 }} />
-          <span className="block bg-white/80" style={{ width: '22px', height: '1.5px', borderRadius: '2px', transition: 'all 0.3s', transform: mobileOpen ? 'rotate(-45deg) translateY(-4.5px)' : 'none' }} />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            {mobileOpen ? (
+              <>
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </>
+            ) : (
+              <>
+                <line x1="4" y1="7" x2="20" y2="7" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="17" x2="20" y2="17" />
+              </>
+            )}
+          </svg>
         </button>
-      </motion.nav>
+      </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center"
-            style={{ background: 'rgba(5,5,8,0.96)', backdropFilter: 'blur(20px)' }}
+            className="md:hidden"
+            style={{
+              background: 'rgba(0,0,0,0.85)',
+              backdropFilter: 'blur(14px)',
+              borderBottom: '1px solid rgba(255,255,255,0.06)',
+              overflow: 'hidden',
+            }}
           >
-            <div className="flex flex-col items-center" style={{ gap: '28px' }}>
+            <div style={{ padding: '16px clamp(20px, 6vw, 80px) 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {navLinks.map((link, i) => (
                 <motion.a
-                  key={link.label}
+                  key={link.href}
                   href={link.href}
                   onClick={(e) => scrollTo(e, link.href)}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  transition={{ delay: i * 0.05, duration: 0.3 }}
                   className="text-white/90 hover:text-white transition-colors"
                   style={{
                     fontFamily: "'Hanken Grotesk', sans-serif",
-                    fontSize: '26px', fontWeight: 400,
-                    textDecoration: 'none', letterSpacing: '-0.01em',
+                    fontSize: '18px',
+                    fontWeight: 400,
+                    textDecoration: 'none',
                   }}
                 >
                   {link.label}
@@ -124,18 +166,20 @@ export default function Navbar() {
                 href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                className="inline-flex items-center text-white mt-4"
+                transition={{ delay: 0.3, duration: 0.3 }}
+                className="text-white inline-flex items-center justify-center"
                 style={{
-                  padding: '14px 32px', borderRadius: '999px',
-                  fontSize: '16px', fontWeight: 400,
+                  marginTop: '8px',
+                  padding: '12px 24px',
+                  borderRadius: '999px',
+                  fontSize: '14px',
+                  fontWeight: 500,
                   textDecoration: 'none',
-                  background: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(255,255,255,0.35)',
+                  background: 'rgba(255,255,255,0.10)',
+                  border: '1px solid rgba(255,255,255,0.30)',
                 }}
-                onClick={() => setMobileOpen(false)}
               >
                 Objednat se
               </motion.a>
@@ -143,6 +187,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </motion.nav>
   )
 }

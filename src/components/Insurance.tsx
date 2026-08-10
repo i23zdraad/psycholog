@@ -25,10 +25,10 @@ const insurers = [
 
 export default function Insurance() {
   return (
-    <section style={{ position: 'relative', padding: 'clamp(60px, 8vw, 100px) 0', background: '#070707' }}>
+    <section id="pojistovny" style={{ position: 'relative', padding: 'clamp(60px, 8vw, 100px) 0', background: '#070707' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
         <FadeIn>
-          <div className="text-center">
+          <div style={{ textAlign: 'center' }}>
             <span style={{
               fontSize: '12px', fontWeight: 400,
               letterSpacing: '0.18em', textTransform: 'uppercase',
@@ -48,13 +48,24 @@ export default function Insurance() {
             }}>
               Spolupracuji se zdravotními pojišťovnami
             </h2>
+            <p style={{
+              marginTop: '14px',
+              fontSize: 'clamp(14px, 1.1vw, 16px)',
+              lineHeight: 1.7,
+              color: 'rgba(255,255,255,0.45)',
+              maxWidth: '560px',
+              margin: '14px auto 0',
+            }}>
+              Některé služby je možné čerpat příspěvkem od zdravotní pojišťovny. Více informací ráda poskytnu osobně.
+            </p>
           </div>
         </FadeIn>
 
         <div className="grid grid-cols-2 lg:grid-cols-4" style={{ marginTop: 'clamp(36px, 4vw, 52px)', gap: '16px' }}>
           {insurers.map((ins, i) => (
             <FadeIn key={i} delay={0.1 + i * 0.08}>
-              <div
+              <motion.div
+                whileHover={{ y: -4, transition: { duration: 0.3 } }}
                 className="glass glass-hover flex flex-col items-center justify-center text-center"
                 style={{
                   borderRadius: '16px',
@@ -94,10 +105,36 @@ export default function Insurance() {
                 }}>
                   {ins.full}
                 </span>
-              </div>
+              </motion.div>
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.5}>
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <motion.a
+              href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center text-white"
+              style={{
+                padding: '13px 28px',
+                borderRadius: '999px',
+                fontSize: 'clamp(13px, 1.1vw, 15px)',
+                fontWeight: 400,
+                textDecoration: 'none',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.35)',
+                backdropFilter: 'blur(6px)',
+                WebkitBackdropFilter: 'blur(6px)',
+              }}
+            >
+              Objednat se
+            </motion.a>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

@@ -1,62 +1,64 @@
-export default function Footer() {
-  return (
-    <footer style={{
-      background: '#050505',
-      borderTop: '1px solid rgba(255,255,255,0.03)',
-      padding: 'clamp(32px, 4vw, 50px) clamp(20px, 4vw, 44px)',
-    }}>
-      <div style={{
-        maxWidth: '1100px',
-        margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-      }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between" style={{ gap: '16px' }}>
-          <div className="flex items-center gap-2.5">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.6 4.1 A8 8 0 1 0 19.9 15.4 A6.2 6.2 0 1 1 15.6 4.1 Z" fill="rgba(255,255,255,0.35)" />
-            </svg>
-            <span style={{
-              fontSize: '13px', fontWeight: 500,
-              letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.35)',
-            }}>
-              Michaela Zdráhalová
-            </span>
-          </div>
+import { motion } from 'framer-motion'
 
-          <div className="flex flex-wrap" style={{ gap: '20px' }}>
-            {[
-              { label: 'O mně', href: '#o-mne' },
-              { label: 'Služby', href: '#sluzby' },
-              { label: 'Ceník', href: '#cenik' },
-              { label: 'Kontakt', href: '#kontakt' },
-            ].map((link) => (
+const footerLinks = [
+  { label: 'O mně', href: '#o-mne' },
+  { label: 'Proč ke mně', href: '#proc-ke-mne' },
+  { label: 'Služby', href: '#sluzby' },
+  { label: 'Ceník', href: '#cenik' },
+  { label: 'Recenze', href: '#recenze' },
+  { label: 'Kontakt', href: '#kontakt' },
+]
+
+export default function Footer() {
+  const scrollTo = (e: React.MouseEvent, href: string) => {
+    e.preventDefault()
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <footer style={{ background: '#000', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '40px 0' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
+        <div className="flex flex-col sm:flex-row items-center justify-between" style={{ gap: '20px' }}>
+          <span style={{
+            fontFamily: "'Hanken Grotesk', sans-serif",
+            fontSize: '14px',
+            fontWeight: 500,
+            color: 'rgba(255,255,255,0.40)',
+          }}>
+            Michaela Zdráhalová
+          </span>
+          <div className="flex flex-wrap items-center justify-center" style={{ gap: '20px' }}>
+            {footerLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
-                }}
+                onClick={(e) => scrollTo(e, link.href)}
                 className="text-white/25 hover:text-white/55 transition-colors"
-                style={{ fontSize: '12px', textDecoration: 'none' }}
+                style={{ fontSize: '13px', textDecoration: 'none' }}
               >
                 {link.label}
               </a>
             ))}
           </div>
+          <motion.a
+            href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ color: 'rgba(255,255,255,0.80)' }}
+            className="text-white/40"
+            style={{ fontSize: '13px', textDecoration: 'none' }}
+          >
+            Objednat se
+          </motion.a>
         </div>
-
-        <div style={{
-          fontSize: '11px',
-          color: 'rgba(255,255,255,0.15)',
-          paddingTop: '16px',
-          borderTop: '1px solid rgba(255,255,255,0.03)',
+        <p style={{
+          textAlign: 'center',
+          marginTop: '24px',
+          fontSize: '12px',
+          color: 'rgba(255,255,255,0.20)',
         }}>
-          © 2026 Michaela Zdráhalová. Všechna práva vyhrazena.
-        </div>
+          © {new Date().getFullYear()} Mgr. Michaela Zdráhalová. Všechna práva vyhrazena.
+        </p>
       </div>
     </footer>
   )
