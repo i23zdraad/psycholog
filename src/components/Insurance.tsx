@@ -25,8 +25,24 @@ const insurers = [
 
 export default function Insurance() {
   return (
-    <section id="pojistovny" style={{ position: 'relative', padding: 'clamp(60px, 8vw, 100px) 0', background: '#070707' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
+    <section id="pojistovny" style={{ position: 'relative', padding: 'clamp(60px, 8vw, 100px) 0', overflow: 'hidden' }}>
+      {/* Background */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(180deg, #050508 0%, #0a0f1a 50%, #050508 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: '30%',
+        left: '-10%',
+        width: '400px',
+        height: '400px',
+        background: 'radial-gradient(ellipse at center, rgba(74,144,164,0.05) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
         <FadeIn>
           <div style={{ textAlign: 'center' }}>
             <span style={{
@@ -65,13 +81,17 @@ export default function Insurance() {
           {insurers.map((ins, i) => (
             <FadeIn key={i} delay={0.1 + i * 0.08}>
               <motion.div
-                whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                className="glass glass-hover flex flex-col items-center justify-center text-center"
+                whileHover={{ y: -4, borderColor: 'rgba(74,144,164,0.20)' }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center justify-center text-center"
                 style={{
                   borderRadius: '16px',
                   padding: 'clamp(24px, 2.5vw, 32px)',
                   minHeight: '160px',
-                  transition: 'all 0.3s ease',
+                  background: 'rgba(255,255,255,0.02)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
                   gap: '12px',
                 }}
               >
@@ -95,7 +115,7 @@ export default function Insurance() {
                     color: 'rgba(255,255,255,0.7)',
                     letterSpacing: '-0.01em',
                   }}>
-                    ZP 213
+                    {ins.name}
                   </div>
                 )}
                 <span style={{
@@ -116,7 +136,7 @@ export default function Insurance() {
               href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center text-white"
               style={{
@@ -125,8 +145,8 @@ export default function Insurance() {
                 fontSize: 'clamp(13px, 1.1vw, 15px)',
                 fontWeight: 400,
                 textDecoration: 'none',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.35)',
+                background: 'rgba(74,144,164,0.10)',
+                border: '1px solid rgba(74,144,164,0.30)',
                 backdropFilter: 'blur(6px)',
                 WebkitBackdropFilter: 'blur(6px)',
               }}

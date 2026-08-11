@@ -19,14 +19,10 @@ function App() {
       <Navbar />
       <Hero />
       <About />
-      <SectionTransition from="#000" to="#000" />
       <WhyMe />
-      <SectionTransition from="#000" to="#070707" />
       <Services />
       <Reviews />
-      <SectionTransition from="#070707" to="#0a0a0a" />
       <Pricing />
-      <SectionTransition from="#0a0a0a" to="#070707" />
       <Insurance />
       <Contact />
       <Footer />

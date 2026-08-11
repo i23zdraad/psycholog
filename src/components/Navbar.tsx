@@ -34,10 +34,10 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? 'rgba(0,0,0,0.65)' : 'transparent',
+        background: scrolled ? 'rgba(5,5,8,0.75)' : 'transparent',
         backdropFilter: scrolled ? 'blur(14px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid rgba(74,144,164,0.12)' : '1px solid transparent',
         transition: 'all 0.35s ease',
       }}
     >
@@ -62,7 +62,7 @@ export default function Navbar() {
             textDecoration: 'none',
           }}
         >
-          M. Zdráhalová
+          Mgr. Michaela Zdráhalová
         </a>
 
         <div className="hidden md:flex items-center" style={{ gap: '24px' }}>
@@ -95,8 +95,8 @@ export default function Navbar() {
               fontSize: '13px',
               fontWeight: 500,
               textDecoration: 'none',
-              background: 'rgba(255,255,255,0.10)',
-              border: '1px solid rgba(255,255,255,0.30)',
+              background: 'rgba(74,144,164,0.15)',
+              border: '1px solid rgba(74,144,164,0.35)',
               backdropFilter: 'blur(4px)',
             }}
           >
@@ -136,9 +136,9 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="md:hidden"
             style={{
-              background: 'rgba(0,0,0,0.85)',
+              background: 'rgba(5,5,8,0.92)',
               backdropFilter: 'blur(14px)',
-              borderBottom: '1px solid rgba(255,255,255,0.06)',
+              borderBottom: '1px solid rgba(74,144,164,0.12)',
               overflow: 'hidden',
             }}
           >
@@ -177,8 +177,8 @@ export default function Navbar() {
                   fontSize: '14px',
                   fontWeight: 500,
                   textDecoration: 'none',
-                  background: 'rgba(255,255,255,0.10)',
-                  border: '1px solid rgba(255,255,255,0.30)',
+                  background: 'rgba(74,144,164,0.15)',
+                  border: '1px solid rgba(74,144,164,0.35)',
                 }}
               >
                 Objednat se

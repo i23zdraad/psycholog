@@ -15,9 +15,9 @@ export default function Hero() {
         playsInline
       />
       {/* Overlays */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.10) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, transparent 30%, transparent 65%, rgba(0,0,0,0.50) 100%)' }} />
-      <div style={{ position: 'absolute', top: '-10%', left: '5%', width: '700px', height: '700px', background: 'radial-gradient(ellipse at 30% 30%, rgba(74,144,164,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(5,5,12,0.60) 0%, rgba(5,5,12,0.25) 55%, rgba(5,5,12,0.15) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(5,5,12,0.40) 0%, transparent 30%, transparent 65%, rgba(5,5,12,0.55) 100%)' }} />
+      <div style={{ position: 'absolute', top: '-10%', left: '5%', width: '700px', height: '700px', background: 'radial-gradient(ellipse at 30% 30%, rgba(74,144,164,0.12) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
       {/* Headline block */}
       <div
@@ -94,8 +94,7 @@ export default function Hero() {
           }}
         >
           Od roku 2009 pomáhám lidem nacházet cestu k sobě. 
-          Individuální terapie, párové konzultace i práce s rodinou — 
-          ve Vyškově i online.
+          Individuální terapie, párové konzultace i práce s rodinou.
         </motion.p>
 
         <motion.div
@@ -111,13 +110,19 @@ export default function Hero() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-primary inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2"
             style={{
               padding: '14px 32px',
               borderRadius: '999px',
               fontSize: 'clamp(13px, 1.1vw, 15px)',
               fontWeight: 500,
               textDecoration: 'none',
+              color: '#fff',
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.20)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
             }}
           >
             <Calendar size={17} />
@@ -131,13 +136,19 @@ export default function Hero() {
             }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-secondary inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2"
             style={{
               padding: '14px 32px',
               borderRadius: '999px',
               fontSize: 'clamp(13px, 1.1vw, 15px)',
               fontWeight: 400,
               textDecoration: 'none',
+              color: '#fff',
+              background: 'rgba(74,144,164,0.12)',
+              border: '1px solid rgba(74,144,164,0.30)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
             }}
           >
             <Phone size={17} />
@@ -161,10 +172,10 @@ export default function Hero() {
         }}
       >
         <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', whiteSpace: 'nowrap', textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}>
-          Vyškov & online
+          Od roku 2009
         </span>
         <p className="hidden md:block" style={{ margin: 0, maxWidth: '400px', fontSize: '12.5px', lineHeight: 1.55, color: 'rgba(255,255,255,0.55)', textAlign: 'center', textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}>
-          Individuální terapie, párové poradenství, práce s rodinou i koučink. Osobně ve Vyškově nebo online.
+          Individuální terapie, párové poradenství, práce s rodinou i koučink.
         </p>
         <motion.a
           href="#o-mne"

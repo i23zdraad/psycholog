@@ -17,17 +17,32 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const pricingData = [
-  { service: 'Individuální konzultace / terapie', format: 'online / osobně', duration: '60 minut', price: '1 200 Kč', popular: false },
-  { service: 'Párové poradenství / terapie', format: 'online / osobně', duration: '90 minut', price: '1 800 Kč', popular: true },
-  { service: 'Rodinná konzultace / terapie', format: 'pouze osobně', duration: '120 minut', price: '2 400 Kč', popular: false },
-  { service: 'Ikigai koučing', format: 'online / osobně', duration: 'tříměsíční program', price: 'info na schůzce', popular: false },
-  { service: 'Lektorování', format: 'osobně / online', duration: 'dle dohody', price: 'individuálně', popular: false },
+  { service: 'Individuální poradenství, terapie', format: '60 minut', duration: '60 minut', price: '1 200 Kč', popular: false },
+  { service: 'Párové poradenství, terapie', format: '90 minut', duration: '90 minut', price: '1 800 Kč', popular: true },
+  { service: 'Práce s rodinou', format: '120 minut', duration: '120 minut', price: '2 400 Kč', popular: false },
+  { service: 'Ikigai koučing', format: 'tříměsíční program', duration: 'tříměsíční program', price: 'info na schůzce', popular: false },
+  { service: 'Lektorování', format: 'dle dohody', duration: 'dle dohody', price: 'individuálně', popular: false },
 ]
 
 export default function Pricing() {
   return (
-    <section id="cenik" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', background: '#0a0a0a' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
+    <section id="cenik" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(180deg, #050508 0%, #0d1320 50%, #050508 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        right: '-10%',
+        width: '500px',
+        height: '500px',
+        background: 'radial-gradient(ellipse at center, rgba(74,144,164,0.05) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
         <FadeIn>
           <span style={{
             fontSize: '12px', fontWeight: 400,
@@ -56,140 +71,109 @@ export default function Pricing() {
         <FadeIn delay={0.15}>
           <p style={{
             marginTop: '14px',
-            fontSize: 'clamp(14px, 1.1vw, 17px)',
-            lineHeight: 1.7,
+            fontSize: 'clamp(14px, 1.1vw, 16px)',
+            lineHeight: 1.6,
             color: 'rgba(255,255,255,0.45)',
-            maxWidth: '560px',
+            maxWidth: '520px',
           }}>
             Platba předem, nejpozději v den konzultace. Číslo účtu zasílám do zprávy.
           </p>
         </FadeIn>
 
-        <div style={{ marginTop: 'clamp(40px, 5vw, 60px)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {pricingData.map((item, i) => (
-            <FadeIn key={i} delay={0.2 + i * 0.08}>
+            <FadeIn key={item.service} delay={0.2 + i * 0.08}>
               <motion.div
-                whileHover={{ scale: 1.005, background: 'rgba(255,255,255,0.025)' }}
-                transition={{ duration: 0.25 }}
-                className="glass"
+                whileHover={{ background: 'rgba(74,144,164,0.04)', borderColor: 'rgba(74,144,164,0.15)' }}
+                transition={{ duration: 0.3 }}
                 style={{
-                  borderRadius: '16px',
-                  padding: 'clamp(20px, 2.5vw, 28px) clamp(24px, 3vw, 32px)',
                   display: 'flex',
-                  flexDirection: 'column',
-                  gap: '8px',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '12px',
+                  padding: '20px 24px',
+                  borderRadius: '16px',
+                  background: item.popular ? 'rgba(74,144,164,0.05)' : 'rgba(255,255,255,0.015)',
+                  border: item.popular ? '1px solid rgba(74,144,164,0.20)' : '1px solid rgba(255,255,255,0.06)',
                   position: 'relative',
-                  overflow: 'hidden',
-                  border: item.popular ? '1px solid rgba(255,255,255,0.15)' : undefined,
                 }}
               >
                 {item.popular && (
-                  <div style={{
+                  <span style={{
                     position: 'absolute',
-                    top: '12px',
-                    right: '16px',
-                    fontSize: '10px',
+                    top: '-10px',
+                    right: '20px',
+                    padding: '4px 14px',
+                    borderRadius: '999px',
+                    fontSize: '11px',
                     fontWeight: 600,
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.05em',
                     textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.7)',
-                    background: 'rgba(255,255,255,0.08)',
-                    padding: '4px 10px',
-                    borderRadius: '999px',
+                    color: '#fff',
+                    background: 'rgba(74,144,164,0.25)',
+                    border: '1px solid rgba(74,144,164,0.40)',
                   }}>
-                    Nejčastější
-                  </div>
+                    Nejoblíbenější
+                  </span>
                 )}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between" style={{ gap: '12px' }}>
-                  <div style={{ flex: 1 }}>
-                    <h3 style={{
-                      margin: 0,
-                      fontFamily: "'Hanken Grotesk', sans-serif",
-                      fontWeight: 500,
-                      fontSize: 'clamp(16px, 1.4vw, 20px)',
-                      color: '#fff',
-                      letterSpacing: '-0.01em',
-                    }}>
-                      {item.service}
-                    </h3>
-                    <p style={{
-                      margin: '6px 0 0',
-                      fontSize: 'clamp(13px, 1vw, 14px)',
-                      color: 'rgba(255,255,255,0.40)',
-                    }}>
-                      {item.format} · {item.duration}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-4" style={{ flexShrink: 0 }}>
-                    <span style={{
-                      fontFamily: "'Hanken Grotesk', sans-serif",
-                      fontWeight: 500,
-                      fontSize: 'clamp(18px, 1.6vw, 24px)',
-                      color: '#fff',
-                      whiteSpace: 'nowrap',
-                    }}>
-                      {item.price}
-                    </span>
-                    <motion.a
-                      href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.12)' }}
-                      whileTap={{ scale: 0.96 }}
-                      className="hidden sm:inline-flex items-center text-white"
-                      style={{
-                        padding: '8px 18px',
-                        borderRadius: '999px',
-                        fontSize: '13px',
-                        fontWeight: 400,
-                        textDecoration: 'none',
-                        background: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(255,255,255,0.20)',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      Objednat
-                    </motion.a>
-                  </div>
-                </div>
-                <a
-                  href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sm:hidden inline-flex items-center justify-center text-white"
-                  style={{
-                    marginTop: '4px',
-                    padding: '10px 20px',
-                    borderRadius: '999px',
+                <div style={{ flex: '1 1 200px' }}>
+                  <p style={{
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    color: '#fff',
+                  }}>
+                    {item.service}
+                  </p>
+                  <p style={{
                     fontSize: '13px',
-                    fontWeight: 400,
-                    textDecoration: 'none',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.20)',
-                  }}
-                >
-                  Objednat se
-                </a>
+                    color: 'rgba(255,255,255,0.4)',
+                    marginTop: '2px',
+                  }}>
+                    {item.format}
+                  </p>
+                </div>
+                <p style={{
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  color: item.popular ? 'rgba(74,144,164,0.9)' : 'rgba(74,144,164,0.8)',
+                  whiteSpace: 'nowrap',
+                }}>
+                  {item.price}
+                </p>
               </motion.div>
             </FadeIn>
           ))}
         </div>
 
-        <FadeIn delay={0.6}>
-          <div style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <FadeIn delay={0.5}>
+          <div style={{
+            marginTop: '32px',
+            padding: '24px',
+            borderRadius: '16px',
+            background: 'rgba(74,144,164,0.04)',
+            border: '1px solid rgba(74,144,164,0.12)',
+          }}>
             <p style={{
               fontSize: '13px',
-              lineHeight: 1.6,
-              color: 'rgba(255,255,255,0.35)',
+              lineHeight: 1.7,
+              color: 'rgba(255,255,255,0.55)',
             }}>
-              <strong style={{ color: 'rgba(255,255,255,0.55)' }}>Storno podmínky:</strong> Termín sezení lze měnit oboustranně nejpozději 24 hodin předem. Při zrušení v kratší době platí storno poplatek 500 Kč.
+              <strong style={{ color: 'rgba(74,144,164,0.85)' }}>Storno podmínky:</strong>{' '}
+              <span style={{ color: 'rgba(255,255,255,0.65)' }}>
+                Termín sezení lze měnit oboustranně nejpozději 24 hodin předem. Při zrušení v kratší době platí storno poplatek 500 Kč kompenzovaný druhé straně.
+              </span>
             </p>
             <p style={{
               fontSize: '13px',
-              lineHeight: 1.6,
-              color: 'rgba(255,255,255,0.35)',
+              lineHeight: 1.7,
+              color: 'rgba(255,255,255,0.55)',
+              marginTop: '14px',
             }}>
-              <strong style={{ color: 'rgba(255,255,255,0.55)' }}>Zprávy z konzultací neposkytuji.</strong> Při vyžádání soudem uvádím pouze počet setkání, jejich přibližný termín a velmi obecně probíraná témata.
+              <strong style={{ color: 'rgba(74,144,164,0.85)' }}>Zprávy z konzultací neposkytuji.</strong>{' '}
+              <span style={{ color: 'rgba(255,255,255,0.65)' }}>
+                Při vyžádání soudem uvádím pouze počet setkání, jejich přibližný termín a velmi obecně probíraná témata.
+              </span>
             </p>
           </div>
         </FadeIn>

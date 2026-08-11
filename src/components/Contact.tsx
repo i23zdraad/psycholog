@@ -39,8 +39,23 @@ export default function Contact() {
   }
 
   return (
-    <section id="kontakt" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', background: '#070707' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
+    <section id="kontakt" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(135deg, #050508 0%, #0a0f1a 50%, #050508 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: '10%',
+        left: '-10%',
+        width: '500px',
+        height: '500px',
+        background: 'radial-gradient(ellipse at center, rgba(74,144,164,0.05) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
         <FadeIn>
           <span style={{
             fontSize: '12px', fontWeight: 400,
@@ -66,169 +81,154 @@ export default function Contact() {
           </h2>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ marginTop: 'clamp(40px, 5vw, 60px)', gap: 'clamp(32px, 4vw, 56px)' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <FadeIn delay={0.15}>
-              <div className="glass" style={{ borderRadius: '20px', padding: 'clamp(24px, 2.5vw, 32px)' }}>
-                <h3 style={{
-                  margin: '0 0 12px',
-                  fontFamily: "'Hanken Grotesk', sans-serif",
-                  fontWeight: 500,
-                  fontSize: '16px',
-                  color: '#fff',
-                }}>
-                  Adresa pracovny
-                </h3>
-                <p style={{
-                  fontSize: '14px',
-                  lineHeight: 1.7,
-                  color: 'rgba(255,255,255,0.55)',
-                  margin: 0,
-                }}>
-                  Nádražní 238/7, Vyškov<br />
-                  budova Central, 3. patro, dveře č. 363
-                </p>
-              </div>
-            </FadeIn>
-
+        <div className="grid md:grid-cols-2" style={{ gap: 'clamp(40px, 5vw, 80px)', marginTop: '48px' }}>
+          {/* Left: Contact info */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             <FadeIn delay={0.2}>
-              <div className="glass" style={{ borderRadius: '20px', padding: 'clamp(24px, 2.5vw, 32px)' }}>
-                <h3 style={{
-                  margin: '0 0 12px',
-                  fontFamily: "'Hanken Grotesk', sans-serif",
-                  fontWeight: 500,
+              <div>
+                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  Email
+                </p>
+                <a href="mailto:info@michaelazdrahalova.cz" style={{
                   fontSize: '16px',
                   color: '#fff',
+                  textDecoration: 'none',
+                  borderBottom: '1px solid rgba(74,144,164,0.3)',
+                  paddingBottom: '2px',
                 }}>
-                  Komunikuji přes
-                </h3>
-                <div className="flex flex-wrap" style={{ gap: '8px' }}>
-                  {['Skype', 'WhatsApp', 'Google Meet', 'Telefon'].map((app) => (
-                    <span key={app} style={{
-                      fontSize: '13px',
-                      color: 'rgba(255,255,255,0.60)',
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      padding: '6px 14px',
-                      borderRadius: '999px',
-                    }}>
-                      {app}
-                    </span>
-                  ))}
-                </div>
+                  info@michaelazdrahalova.cz
+                </a>
               </div>
             </FadeIn>
 
             <FadeIn delay={0.25}>
-              <div className="glass" style={{ borderRadius: '20px', padding: 'clamp(24px, 2.5vw, 32px)' }}>
-                <h3 style={{
-                  margin: '0 0 12px',
-                  fontFamily: "'Hanken Grotesk', sans-serif",
-                  fontWeight: 500,
+              <div>
+                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  Telefon
+                </p>
+                <a href="tel:+420777123456" style={{
                   fontSize: '16px',
                   color: '#fff',
+                  textDecoration: 'none',
+                  borderBottom: '1px solid rgba(74,144,164,0.3)',
+                  paddingBottom: '2px',
                 }}>
-                  Rezervace
-                </h3>
-                <p style={{
-                  fontSize: '14px',
-                  lineHeight: 1.7,
-                  color: 'rgba(255,255,255,0.55)',
-                  margin: '0 0 16px',
-                }}>
-                  Nejsnazší cesta k termínu je přes online rezervaci na ZnamyLekar.cz
+                  +420 777 123 456
+                </a>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.3}>
+              <div>
+                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  Online objednávka
                 </p>
                 <motion.a
                   href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+                  whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center text-white"
                   style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
                     padding: '12px 24px',
                     borderRadius: '999px',
                     fontSize: '14px',
-                    fontWeight: 400,
+                    fontWeight: 500,
                     textDecoration: 'none',
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.30)',
+                    color: '#fff',
+                    background: 'rgba(74,144,164,0.12)',
+                    border: '1px solid rgba(74,144,164,0.30)',
                   }}
                 >
                   Objednat se online
                 </motion.a>
               </div>
             </FadeIn>
+
+            <FadeIn delay={0.35}>
+              <div style={{
+                padding: '24px',
+                borderRadius: '16px',
+                background: 'rgba(74,144,164,0.03)',
+                border: '1px solid rgba(74,144,164,0.08)',
+              }}>
+                <p style={{
+                  fontSize: '13px',
+                  lineHeight: 1.6,
+                  color: 'rgba(255,255,255,0.4)',
+                }}>
+                  Pokud jste ve stavu ohrožení sebe nebo jiných osob, prosíme, neprodleně kontaktujte <strong style={{ color: 'rgba(255,255,255,0.6)' }}>První linku psychické pomoci</strong> (telefonicky: <a href="tel:116123" style={{ color: 'rgba(74,144,164,0.7)', textDecoration: 'none' }}>116 123</a>).
+                </p>
+              </div>
+            </FadeIn>
           </div>
 
-          <FadeIn delay={0.2}>
-            <form onSubmit={handleSubmit} className="glass" style={{
-              borderRadius: '20px',
-              padding: 'clamp(24px, 2.5vw, 32px)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px',
-            }}>
-              <h3 style={{
-                margin: '0 0 4px',
-                fontFamily: "'Hanken Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: '18px',
-                color: '#fff',
-              }}>
-                Napište mi
-              </h3>
-              <input
-                type="text"
-                placeholder="Jméno"
-                required
-                style={inputStyle}
-                onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
-              />
-              <input
-                type="email"
-                placeholder="E-mail"
-                required
-                style={inputStyle}
-                onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
-              />
-              <textarea
-                placeholder="Zpráva"
-                rows={5}
-                required
-                style={{ ...inputStyle, resize: 'vertical' }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.20)' }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
-              />
+          {/* Right: Form */}
+          <FadeIn delay={0.3}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Jméno"
+                  required
+                  style={inputStyle}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(74,144,164,0.3)'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  style={inputStyle}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(74,144,164,0.3)'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
+                />
+              </div>
+              <div>
+                <textarea
+                  placeholder="Vaše zpráva..."
+                  required
+                  rows={5}
+                  style={{
+                    ...inputStyle,
+                    resize: 'vertical',
+                    minHeight: '120px',
+                  }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(74,144,164,0.3)'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
+                />
+              </div>
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 style={{
-                  alignSelf: 'flex-start',
-                  padding: '12px 28px',
+                  padding: '14px 32px',
                   borderRadius: '999px',
                   fontSize: '14px',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   color: '#fff',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.25)',
+                  background: 'rgba(74,144,164,0.12)',
+                  border: '1px solid rgba(74,144,164,0.30)',
                   cursor: 'pointer',
-                  fontFamily: "'Inter', sans-serif",
+                  alignSelf: 'flex-start',
                 }}
               >
                 Odeslat zprávu
               </motion.button>
               {formStatus && (
                 <motion.p
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   style={{
                     fontSize: '14px',
-                    color: 'rgba(255,255,255,0.60)',
-                    margin: 0,
+                    color: 'rgba(74,144,164,0.8)',
+                    marginTop: '8px',
                   }}
                 >
                   {formStatus}

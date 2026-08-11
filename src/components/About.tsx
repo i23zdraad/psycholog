@@ -18,8 +18,24 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function About() {
   return (
-    <section id="o-mne" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', background: '#000' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
+    <section id="o-mne" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', overflow: 'hidden' }}>
+      {/* Background */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(135deg, #050508 0%, #0a0f1a 50%, #050508 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: '10%',
+        right: '-5%',
+        width: '500px',
+        height: '500px',
+        background: 'radial-gradient(ellipse at center, rgba(74,144,164,0.05) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 44px)' }}>
         <FadeIn>
           <span style={{
             fontSize: '12px', fontWeight: 400,
@@ -45,181 +61,166 @@ export default function About() {
           </h2>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ marginTop: 'clamp(40px, 5vw, 60px)', gap: 'clamp(40px, 5vw, 64px)', alignItems: 'center' }}>
+        <div className="grid md:grid-cols-2" style={{ gap: 'clamp(40px, 5vw, 80px)', marginTop: '56px' }}>
           {/* Left: Photo */}
-          <FadeIn delay={0.15}>
-            <motion.div
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.4 }}
-              style={{
-                position: 'relative',
-                borderRadius: '24px',
+          <FadeIn delay={0.2}>
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                borderRadius: '20px',
                 overflow: 'hidden',
-                aspectRatio: '4/5',
-                maxHeight: '560px',
-              }}
-            >
-              {/* Gradient border effect */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                padding: '1px',
-                borderRadius: '24px',
-                background: 'linear-gradient(135deg, rgba(74,144,164,0.3), rgba(255,255,255,0.05), rgba(46,90,124,0.2))',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                pointerEvents: 'none',
-                zIndex: 2,
-              }} />
-              {/* Glow */}
-              <div style={{
-                position: 'absolute',
-                top: '-20%',
-                left: '-20%',
-                width: '60%',
-                height: '60%',
-                background: 'radial-gradient(circle, rgba(74,144,164,0.12) 0%, transparent 70%)',
-                pointerEvents: 'none',
-                zIndex: 1,
-              }} />
-              <img
-                src="/ja.jpg"
-                alt="Michaela Zdráhalová"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                  filter: 'grayscale(20%) contrast(1.05)',
-                }}
-              />
-              {/* Bottom gradient overlay */}
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: '40%',
-                background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
-                pointerEvents: 'none',
-                zIndex: 1,
-              }} />
-              {/* Name tag */}
-              <div style={{
-                position: 'absolute',
-                bottom: '24px',
-                left: '24px',
-                zIndex: 3,
+                aspectRatio: '3/4',
+                maxWidth: '420px',
+                position: 'relative',
               }}>
-                <span style={{
-                  fontFamily: "'Hanken Grotesk', sans-serif",
-                  fontSize: '18px',
-                  fontWeight: 500,
-                  color: '#fff',
-                  textShadow: '0 2px 12px rgba(0,0,0,0.5)',
+                <img
+                  src="/ja.jpg"
+                  alt="Mgr. Michaela Zdráhalová"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                {/* Gradient border effect */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: '20px',
+                  border: '1px solid rgba(74,144,164,0.15)',
+                  pointerEvents: 'none',
+                }} />
+                {/* Glow */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '-20px',
+                  left: '20%',
+                  width: '60%',
+                  height: '40px',
+                  background: 'radial-gradient(ellipse at center, rgba(74,144,164,0.15) 0%, transparent 70%)',
+                  filter: 'blur(20px)',
+                  pointerEvents: 'none',
+                }} />
+                {/* Bottom gradient overlay */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '120px',
+                  background: 'linear-gradient(to top, rgba(5,5,8,0.8), transparent)',
+                  pointerEvents: 'none',
+                }} />
+                {/* Name tag */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '20px',
+                  left: '20px',
                 }}>
-                  Mgr. Michaela Zdráhalová
-                </span>
-                <p style={{
-                  fontSize: '13px',
-                  color: 'rgba(255,255,255,0.60)',
-                  margin: '4px 0 0',
-                  textShadow: '0 1px 8px rgba(0,0,0,0.5)',
-                }}>
-                  Psycholožka & psychoterapeutka
-                </p>
+                  <p style={{
+                    fontFamily: "'Hanken Grotesk', sans-serif",
+                    fontSize: '18px',
+                    fontWeight: 500,
+                    color: '#fff',
+                    textShadow: '0 2px 12px rgba(0,0,0,0.5)',
+                  }}>
+                    Mgr. Michaela Zdráhalová
+                  </p>
+                  <p style={{
+                    fontSize: '13px',
+                    color: 'rgba(255,255,255,0.5)',
+                    marginTop: '2px',
+                  }}>
+                    Psycholožka & psychoterapeutka
+                  </p>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </FadeIn>
 
           {/* Right: Text */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <FadeIn delay={0.2}>
-              <p style={{
-                fontSize: 'clamp(14px, 1.1vw, 16px)',
-                lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.55)',
-              }}>
+            <FadeIn delay={0.25}>
+              <p style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)' }}>
                 Jmenuji se Michaela Zdráhalová a pocházím z Kroměříže, kde jsem téměř třicet let žila. Poté jsem se odstěhovala za prací do Brna a poblíž Brna setrvávám dosud. Ráda trávím čas s rodinou, v přírodě, s oblibou poslouchám zvuky lesa, čtu si, vychutnávám dobré jídlo nebo se věnuji sportu.
               </p>
             </FadeIn>
-            <FadeIn delay={0.25}>
-              <p style={{
-                fontSize: 'clamp(14px, 1.1vw, 16px)',
-                lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.55)',
-              }}>
+            <FadeIn delay={0.3}>
+              <p style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)' }}>
                 V Olomouci na Univerzitě Palackého jsem úspěšně absolvovala studium jednooborové psychologie, pedagogiky – sociální práce a speciální pedagogiky. Současně od roku 2009 pracuji s lidmi.
               </p>
             </FadeIn>
-            <FadeIn delay={0.3}>
-              <p style={{
-                fontSize: 'clamp(14px, 1.1vw, 16px)',
-                lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.55)',
-              }}>
+            <FadeIn delay={0.35}>
+              <p style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)' }}>
                 Dlouho jsem se věnovala adolescentům s výchovnými problémy, krizové intervenci, diagnostice, mediacím a rodinným terapiím. V soukromé praxi nabízím individuální, párové konzultace i práci s celou rodinou. Nejčastěji řešíme vztahy, sebedůvěru, náročné životní situace, úzkosti a nejistoty.
               </p>
             </FadeIn>
 
             {/* Info cards */}
-            <FadeIn delay={0.35}>
-              <div className="glass" style={{
-                borderRadius: '16px',
+            <FadeIn delay={0.4}>
+              <div style={{
+                marginTop: '24px',
                 padding: '24px',
-                marginTop: '8px',
+                borderRadius: '16px',
+                background: 'rgba(74,144,164,0.04)',
+                border: '1px solid rgba(74,144,164,0.10)',
               }}>
                 <h3 style={{
-                  margin: '0 0 14px',
                   fontFamily: "'Hanken Grotesk', sans-serif",
-                  fontWeight: 500,
                   fontSize: '16px',
+                  fontWeight: 500,
                   color: '#fff',
+                  marginBottom: '16px',
                 }}>
                   Vzdělání a praxe
                 </h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {[
-                    'Mgr. psychologie, Univerzita Palackého v Olomouci',
-                    'Pedagogika – sociální práce a speciální pedagogika',
-                    'Od roku 2009 praxe s lidmi',
-                    'Integrativní psychoterapie – 5letý výcvik (750 h)',
-                    'Facilitativní, transformativní a rodinná mediace',
-                    'Ikigai koučovací kurz, 2024',
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.50)', lineHeight: 1.5 }}>
-                      <span style={{
-                        width: '5px', height: '5px', borderRadius: '50%',
-                        background: 'rgba(74,144,164,0.6)',
-                        marginTop: '6px', flexShrink: 0,
-                      }} />
+                {[
+                  'Mgr. psychologie, Univerzita Palackého v Olomouci',
+                  'Pedagogika – sociální práce a speciální pedagogika',
+                  'Od roku 2009 praxe s lidmi',
+                  'Integrativní psychoterapie – 5letý výcvik (750 h)',
+                  'Facilitativní, transformativní a rodinná mediace',
+                  'Ikigai koučovací kurz, 2024',
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '10px',
+                    marginBottom: i === 5 ? 0 : '10px',
+                  }}>
+                    <span style={{
+                      width: '5px',
+                      height: '5px',
+                      borderRadius: '50%',
+                      background: 'rgba(74,144,164,0.6)',
+                      marginTop: '8px',
+                      flexShrink: 0,
+                    }} />
+                    <span style={{
+                      fontSize: '14px',
+                      color: 'rgba(255,255,255,0.55)',
+                      lineHeight: 1.5,
+                    }}>
                       {item}
-                    </li>
-                  ))}
-                </ul>
+                    </span>
+                  </div>
+                ))}
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.4}>
+            <FadeIn delay={0.45}>
               <motion.a
                 href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03, background: 'rgba(255,255,255,0.12)' }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center text-white"
+                className="inline-flex items-center justify-center"
                 style={{
-                  marginTop: '4px',
-                  padding: '13px 28px',
+                  marginTop: '12px',
+                  padding: '14px 32px',
                   borderRadius: '999px',
-                  fontSize: 'clamp(13px, 1.1vw, 15px)',
-                  fontWeight: 400,
+                  fontSize: '14px',
+                  fontWeight: 500,
                   textDecoration: 'none',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.25)',
-                  backdropFilter: 'blur(6px)',
-                  WebkitBackdropFilter: 'blur(6px)',
+                  color: '#fff',
+                  background: 'rgba(74,144,164,0.12)',
+                  border: '1px solid rgba(74,144,164,0.30)',
                   alignSelf: 'flex-start',
                 }}
               >
