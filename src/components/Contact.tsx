@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import { MapPin } from 'lucide-react'
 
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null)
@@ -17,27 +18,6 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Contact() {
-  const [formStatus, setFormStatus] = useState('')
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setFormStatus('Děkuji za zprávu. Ozvu se vám do týdne.')
-    setTimeout(() => setFormStatus(''), 5000)
-  }
-
-  const inputStyle = {
-    width: '100%',
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.08)',
-    borderRadius: '12px',
-    padding: '14px 16px',
-    color: '#fff',
-    fontSize: '14px',
-    fontFamily: "'Inter', sans-serif",
-    outline: 'none',
-    transition: 'border-color 0.3s ease',
-  }
-
   return (
     <section id="kontakt" style={{ position: 'relative', padding: 'clamp(80px, 10vw, 140px) 0', overflow: 'hidden' }}>
       <div style={{
@@ -87,6 +67,25 @@ export default function Contact() {
             <FadeIn delay={0.2}>
               <div>
                 <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  Adresa pracovny
+                </p>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                  <MapPin size={18} style={{ color: 'rgba(74,144,164,0.7)', marginTop: '3px', flexShrink: 0 }} />
+                  <div>
+                    <p style={{ fontSize: '16px', color: '#fff', lineHeight: 1.5 }}>
+                      Nádražní 238/7, Vyškov 682 01
+                    </p>
+                    <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.40)', marginTop: '2px' }}>
+                      budova Central, 3. patro, pracovna č. 363
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.25}>
+              <div>
+                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
                   Email
                 </p>
                 <a href="mailto:info@michaelazdrahalova.cz" style={{
@@ -101,7 +100,7 @@ export default function Contact() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.25}>
+            <FadeIn delay={0.3}>
               <div>
                 <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
                   Telefon
@@ -118,7 +117,7 @@ export default function Contact() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.3}>
+            <FadeIn delay={0.35}>
               <div>
                 <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
                   Online objednávka
@@ -148,7 +147,7 @@ export default function Contact() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.35}>
+            <FadeIn delay={0.4}>
               <div style={{
                 padding: '24px',
                 borderRadius: '16px',
@@ -166,75 +165,65 @@ export default function Contact() {
             </FadeIn>
           </div>
 
-          {/* Right: Form */}
+          {/* Right: Map with pin */}
           <FadeIn delay={0.3}>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Jméno"
-                  required
-                  style={inputStyle}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(74,144,164,0.3)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  required
-                  style={inputStyle}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(74,144,164,0.3)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
-                />
-              </div>
-              <div>
-                <textarea
-                  placeholder="Vaše zpráva..."
-                  required
-                  rows={5}
-                  style={{
-                    ...inputStyle,
-                    resize: 'vertical',
-                    minHeight: '120px',
-                  }}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(74,144,164,0.3)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
-                />
-              </div>
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                style={{
-                  padding: '14px 32px',
-                  borderRadius: '999px',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  color: '#fff',
+            <div style={{
+              position: 'relative',
+              width: '100%',
+              minHeight: '420px',
+              height: '100%',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              border: '1px solid rgba(74,144,164,0.08)',
+            }}>
+              <iframe
+                src="https://maps.google.com/maps?q=N%C3%A1dra%C5%BEn%C3%AD+238%2F7%2C+682+01+Vy%C5%A1kov&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)', minHeight: '420px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa pracovny"
+              />
+              {/* Overlay card with address */}
+              <div style={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px',
+                right: '16px',
+                padding: '14px 18px',
+                borderRadius: '12px',
+                background: 'rgba(5,5,8,0.85)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(74,144,164,0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+              }}>
+                <div style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
                   background: 'rgba(74,144,164,0.12)',
-                  border: '1px solid rgba(74,144,164,0.30)',
-                  cursor: 'pointer',
-                  alignSelf: 'flex-start',
-                }}
-              >
-                Odeslat zprávu
-              </motion.button>
-              {formStatus && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  style={{
-                    fontSize: '14px',
-                    color: 'rgba(74,144,164,0.8)',
-                    marginTop: '8px',
-                  }}
-                >
-                  {formStatus}
-                </motion.p>
-              )}
-            </form>
+                  border: '1px solid rgba(74,144,164,0.25)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <MapPin size={16} style={{ color: 'rgba(74,144,164,0.9)' }} />
+                </div>
+                <div>
+                  <p style={{ fontSize: '13px', fontWeight: 500, color: '#fff' }}>
+                    Nádražní 238/7, Vyškov
+                  </p>
+                  <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginTop: '1px' }}>
+                    budova Central, 3. patro, pracovna 363
+                  </p>
+                </div>
+              </div>
+            </div>
           </FadeIn>
         </div>
       </div>

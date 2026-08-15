@@ -227,7 +227,7 @@ export default function Reviews() {
             animate={{ x: ['0%', '-50%'] }}
             transition={{
               x: {
-                duration: 120,
+                duration: 130,
                 repeat: Infinity,
                 ease: 'linear',
               },
