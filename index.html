@@ -10,15 +10,15 @@
   <meta name="description" content="Michaela Zdráhalová – psycholožka a psychoterapeutka ve Vyškově. Individuální terapie, párové poradenství, práce s rodinou a ikigai koučing. Objednejte se na konzultaci ještě dnes." />
   <meta name="keywords" content="psycholog Vyškov, psychoterapeut Vyškov, párová terapie, rodinné poradenství, individuální terapie, ikigai koučing, psycholožka Vyškov" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://psycholog-mark-2.vercel.app/" />
+  <link rel="canonical" href="https://www.zdrahalovamichaela.cz/" />
   <meta name="author" content="Michaela Zdráhalová" />
 
   <!-- Open Graph (Facebook, LinkedIn, WhatsApp náhledy) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Psycholog Vyškov – Michaela Zdráhalová | Psychoterapie a poradenství" />
   <meta property="og:description" content="Individuální terapie, párové poradenství, práce s rodinou a ikigai koučing ve Vyškově. Bezpečný prostor pro řešení vašich témat." />
-  <meta property="og:url" content="https://psycholog-mark-2.vercel.app/" />
-  <meta property="og:image" content="https://psycholog-mark-2.vercel.app/og-image.jpg" />
+  <meta property="og:url" content="https://www.zdrahalovamichaela.cz/" />
+  <meta property="og:image" content="https://www.zdrahalovamichaela.cz/og-image.png" />
   <meta property="og:locale" content="cs_CZ" />
   <meta property="og:site_name" content="Michaela Zdráhalová – Psycholog & Psychoterapeut" />
 
@@ -26,24 +26,42 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Psycholog Vyškov – Michaela Zdráhalová" />
   <meta name="twitter:description" content="Individuální terapie, párové poradenství a rodinné poradenství ve Vyškově." />
-  <meta name="twitter:image" content="https://psycholog-mark-2.vercel.app/og-image.jpg" />
+  <meta name="twitter:image" content="https://www.zdrahalovamichaela.cz/og-image.png" />
 
-  <!-- Strukturovaná data pro Google (rich snippets) -->
+  <!-- Strukturovaná data pro Google (rich snippets + propojení jména s webem) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Michaela Zdráhalová – Psycholog & Psychoterapeut",
-    "image": "https://psycholog-mark-2.vercel.app/og-image.jpg",
-    "url": "https://psycholog-mark-2.vercel.app/",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Vyškov",
-      "addressCountry": "CZ"
-    },
-    "areaServed": "Vyškov",
-    "description": "Individuální terapie, párové poradenství, práce s rodinou a ikigai koučing."
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.zdrahalovamichaela.cz/#person",
+        "name": "Michaela Zdráhalová",
+        "jobTitle": "Psycholožka a psychoterapeutka",
+        "url": "https://www.zdrahalovamichaela.cz/",
+        "image": "https://www.zdrahalovamichaela.cz/ja.jpg",
+        "worksFor": { "@id": "https://www.zdrahalovamichaela.cz/#business" },
+        "sameAs": [
+          "https://www.znamylekar.cz/profil/michaela-zdrahalova"
+        ]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.zdrahalovamichaela.cz/#business",
+        "name": "Michaela Zdráhalová – Psycholog & Psychoterapeut",
+        "image": "https://www.zdrahalovamichaela.cz/og-image.png",
+        "url": "https://www.zdrahalovamichaela.cz/",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Vyškov",
+          "addressCountry": "CZ"
+        },
+        "areaServed": "Vyškov",
+        "description": "Individuální terapie, párové poradenství, práce s rodinou a ikigai koučing.",
+        "founder": { "@id": "https://www.zdrahalovamichaela.cz/#person" }
+      }
+    ]
   }
   </script>
 
