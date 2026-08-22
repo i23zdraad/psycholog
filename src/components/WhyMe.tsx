@@ -20,7 +20,7 @@ const reasons = [
   {
     num: '01',
     title: 'Odbornost a zkušenost',
-    desc: 'Více než 15 let praxe, tři vysokoškolská vzdělání a dlouhodobý psychoterapeutický výcvik. Registrace v České psychoterapeutické společnosti a České asociaci pro psychoterapii.',
+    desc:'Více než 15 let praxe, tři vysokoškolská vzdělání a dlouhodobý psychoterapeutický výcvik. Registrace v České asociaci pro psychoterapii.',
   },
   {
     num: '02',
