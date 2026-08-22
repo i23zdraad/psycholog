@@ -55,9 +55,20 @@ export default function Navbar() {
 
   const scrollTo = (e: React.MouseEvent, href: string) => {
     e.preventDefault()
-    if (href === '#') window.scrollTo({ top: 0, behavior: 'smooth' })
-    else document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    const wasOpen = mobileOpen
     setMobileOpen(false)
+
+    const doScroll = () => {
+      if (href === '#') window.scrollTo({ top: 0, behavior: 'smooth' })
+      else document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    // Pokud bylo mobilní menu otevřené, počkáme, až doběhne
+    // zavírací animace (viz transition duration u AnimatePresence níže),
+    // aby scrollIntoView počítal s už ustáleným layoutem.
+    // Bez toho se na Androidu scroll často vůbec neprovede.
+    if (wasOpen) setTimeout(doScroll, 320)
+    else doScroll()
   }
 
   return (
