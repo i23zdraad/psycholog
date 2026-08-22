@@ -47,7 +47,7 @@ export default function Hero() {
             borderRadius: '999px',
             backdropFilter: 'blur(4px)',
           }}>
-            Registrovaná psycholožka & psychoterapeutka
+            psycholožka & psychoterapeutka
           </span>
         </motion.div>
 

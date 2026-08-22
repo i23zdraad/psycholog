@@ -64,7 +64,7 @@ export default function Pricing() {
             color: '#fff',
             maxWidth: '600px',
           }}>
-            Transparentní ceny
+            Poskytované služby a jejich ceny
           </h2>
         </FadeIn>
 
