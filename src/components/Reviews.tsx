@@ -189,7 +189,7 @@ export default function Reviews() {
               color: 'rgba(255,255,255,0.45)',
               maxWidth: '520px',
             }}>
-              Více než 33 klientů mi dalo svou důvěru. Zde jsou jejich zkušenosti.
+              Více než 300 klientů mi dalo svou důvěru. Zde jsou jejich zkušenosti.
             </p>
           </FadeIn>
         </div>

@@ -57,7 +57,7 @@ export default function Contact() {
             color: '#fff',
             maxWidth: '600px',
           }}>
-            Ráda vás uslyším
+            Kontaktujte mě
           </h2>
         </FadeIn>
 
@@ -95,27 +95,11 @@ export default function Contact() {
                   borderBottom: '1px solid rgba(74,144,164,0.3)',
                   paddingBottom: '2px',
                 }}>
-                  info@michaelazdrahalova.cz
+                  zdrahalova.michaela@gmail.com
                 </a>
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.3}>
-              <div>
-                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
-                  Telefon
-                </p>
-                <a href="tel:+420777123456" style={{
-                  fontSize: '16px',
-                  color: '#fff',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(74,144,164,0.3)',
-                  paddingBottom: '2px',
-                }}>
-                  +420 777 123 456
-                </a>
-              </div>
-            </FadeIn>
 
             <FadeIn delay={0.35}>
               <div>
