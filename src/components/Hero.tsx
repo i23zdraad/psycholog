@@ -76,7 +76,7 @@ export default function Hero() {
             color: 'rgba(255,255,255,0.5)',
             marginTop: '8px',
           }}>
-            Psycholog, psychoterapeut
+            Psycholožka a psychoterapeutka
           </span>
         </motion.h1>
 
