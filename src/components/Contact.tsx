@@ -88,7 +88,7 @@ export default function Contact() {
                 <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
                   Email
                 </p>
-                <a href="mailto:info@michaelazdrahalova.cz" style={{
+                <a href="mailto:zdrahalova.michaela@gmail.com" style={{
                   fontSize: '16px',
                   color: '#fff',
                   textDecoration: 'none',
