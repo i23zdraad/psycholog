@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Experience from './components/Experience'
 import WhyMe from './components/WhyMe'
 import Services from './components/Services'
 import Reviews from './components/Reviews'
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Experience />
       <WhyMe />
       <Services />
       <Reviews />

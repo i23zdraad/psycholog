@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 
 const footerLinks = [
   { label: 'O mně', href: '#o-mne' },
+  { label: 'Vzdělání a praxe', href: '#vzdelani-praxe' },
   { label: 'Proč ke mně', href: '#proc-ke-mne' },
   { label: 'Služby', href: '#sluzby' },
   { label: 'Ceník', href: '#cenik' },

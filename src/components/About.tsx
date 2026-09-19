@@ -73,7 +73,7 @@ export default function About() {
                 position: 'relative',
               }}>
                 <img
-                  src="/ja.jpg"
+                  src="/ja.JPG"
                   alt="Mgr. Michaela Zdráhalová"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -151,59 +151,7 @@ export default function About() {
               </p>
             </FadeIn>
 
-            {/* Info cards */}
             <FadeIn delay={0.4}>
-              <div style={{
-                marginTop: '24px',
-                padding: '24px',
-                borderRadius: '16px',
-                background: 'rgba(74,144,164,0.04)',
-                border: '1px solid rgba(74,144,164,0.10)',
-              }}>
-                <h3 style={{
-                  fontFamily: "'Hanken Grotesk', sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 500,
-                  color: '#fff',
-                  marginBottom: '16px',
-                }}>
-                  Vzdělání a praxe
-                </h3>
-                {[
-                  'Mgr. psychologie, Univerzita Palackého v Olomouci',
-                  'Pedagogika – sociální práce a speciální pedagogika',
-                  'Od roku 2009 praxe s lidmi',
-                  'Integrativní psychoterapie – 5letý výcvik (750 h)',
-                  'Facilitativní, transformativní a rodinná mediace',
-                  'Ikigai koučovací kurz, 2024',
-                ].map((item, i) => (
-                  <div key={i} style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '10px',
-                    marginBottom: i === 5 ? 0 : '10px',
-                  }}>
-                    <span style={{
-                      width: '5px',
-                      height: '5px',
-                      borderRadius: '50%',
-                      background: 'rgba(74,144,164,0.6)',
-                      marginTop: '8px',
-                      flexShrink: 0,
-                    }} />
-                    <span style={{
-                      fontSize: '14px',
-                      color: 'rgba(255,255,255,0.55)',
-                      lineHeight: 1.5,
-                    }}>
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.45}>
               <motion.a
                 href="https://www.znamylekar.cz/profil/michaela-zdrahalova?utm_source=widget-clinic-&utm_medium=link&widget=1&fid="
                 target="_blank"

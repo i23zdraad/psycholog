@@ -161,7 +161,7 @@ export default function Pricing() {
             }}>
               <strong style={{ color: 'rgba(74,144,164,0.85)' }}>Storno podmínky:</strong>{' '}
               <span style={{ color: 'rgba(255,255,255,0.65)' }}>
-                Termín sezení lze měnit oboustranně nejpozději 24 hodin předem. Při zrušení v kratší době platí storno poplatek 500 Kč kompenzovaný druhé straně.
+                V případě zrušení konzultace méně než 24 hodin před jejím konáním se klient zavazuje uhradit plnou cenu sezení.
               </span>
             </p>
             <p style={{

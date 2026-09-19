@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'O mně', href: '#o-mne' },
+  { label: 'Vzdělání a praxe', href: '#vzdelani-praxe' },
   { label: 'Proč ke mně', href: '#proc-ke-mne' },
   { label: 'Služby', href: '#sluzby' },
   { label: 'Ceník', href: '#cenik' },
