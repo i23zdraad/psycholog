@@ -73,7 +73,7 @@ export default function About() {
                 position: 'relative',
               }}>
                 <img
-                  src="/ja.JPG"
+                  src="/ja.jpg"
                   alt="Mgr. Michaela Zdráhalová"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
