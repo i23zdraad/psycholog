@@ -161,7 +161,7 @@ export default function Contact() {
               border: '1px solid rgba(74,144,164,0.08)',
             }}>
               <iframe
-                src="https://maps.google.com/maps?q=N%C3%A1dra%C5%BEn%C3%AD+238%2F7%2C+682+01+Vy%C5%A1kov&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps?q=Advok%C3%A1tn%C3%AD+kancel%C3%A1%C5%99+Emil+Poul&ll=49.2773794,16.9949037&z=17&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)', minHeight: '420px' }}
