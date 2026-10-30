@@ -52,6 +52,7 @@ const reviewsData = [
     verified: true,
     rating: 5,
   },
+  }, 
 ]
 
 function Stars({ count }: { count: number }) {
