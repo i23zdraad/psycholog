@@ -16,13 +16,56 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   )
 }
 
+type Mode = 'online' | 'osobně'
+
 const pricingData = [
-  { service: 'Individuální poradenství, terapie', format: '60 minut', duration: '60 minut', price: '1 200 Kč', popular: false },
-  { service: 'Párové poradenství, terapie', format: '90 minut', duration: '90 minut', price: '1 800 Kč', popular: true },
-  { service: 'Práce s rodinou', format: '120 minut', duration: '120 minut', price: '2 400 Kč', popular: false },
-  { service: 'Ikigai koučing', format: 'tříměsíční program', duration: 'tříměsíční program', price: 'info na schůzce', popular: false },
-  { service: 'Lektorování', format: 'dle dohody', duration: 'dle dohody', price: 'individuálně', popular: false },
+  { service: 'Individuální poradenství, terapie', format: '60 minut', price: '1 200 Kč', mode: ['online', 'osobně'] as Mode[], popular: false },
+  { service: 'Párové poradenství, terapie', format: '90 minut', price: '1 800 Kč', mode: ['online', 'osobně'] as Mode[], popular: true },
+  { service: 'Práce s rodinou', format: '120 minut', price: '2 400 Kč', mode: ['osobně'] as Mode[], popular: false },
+  { service: 'Ikigai koučing', format: 'tříměsíční program', price: 'info na schůzce', mode: ['online', 'osobně'] as Mode[], popular: false },
+  { service: 'Lektorování', format: 'dle dohody', price: 'individuálně', mode: ['online', 'osobně'] as Mode[], popular: false },
 ]
+
+const modeStyles: Record<Mode, { color: string; background: string; border: string }> = {
+  online: {
+    color: 'rgba(140, 210, 224, 0.95)',
+    background: 'rgba(74, 144, 164, 0.12)',
+    border: 'rgba(74, 144, 164, 0.35)',
+  },
+  'osobně': {
+    color: 'rgba(176, 200, 210, 0.90)',
+    background: 'rgba(255, 255, 255, 0.04)',
+    border: 'rgba(255, 255, 255, 0.14)',
+  },
+}
+
+function ModeBadge({ mode }: { mode: Mode }) {
+  const s = modeStyles[mode]
+  return (
+    <span style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '6px',
+      padding: '4px 12px',
+      borderRadius: '999px',
+      fontSize: '11px',
+      fontWeight: 600,
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      color: s.color,
+      background: s.background,
+      border: `1px solid ${s.border}`,
+    }}>
+      <span style={{
+        width: '5px',
+        height: '5px',
+        borderRadius: '50%',
+        background: s.color,
+      }} />
+      {mode}
+    </span>
+  )
+}
 
 export default function Pricing() {
   return (
@@ -125,13 +168,30 @@ export default function Pricing() {
                   }}>
                     {item.service}
                   </p>
-                  <p style={{
-                    fontSize: '13px',
-                    color: 'rgba(255,255,255,0.4)',
-                    marginTop: '2px',
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    marginTop: '8px',
+                    flexWrap: 'wrap',
                   }}>
-                    {item.format}
-                  </p>
+                    <span style={{
+                      fontSize: '13px',
+                      color: 'rgba(255,255,255,0.4)',
+                    }}>
+                      {item.format}
+                    </span>
+                    <span style={{
+                      width: '3px',
+                      height: '3px',
+                      borderRadius: '50%',
+                      background: 'rgba(255,255,255,0.2)',
+                      flexShrink: 0,
+                    }} />
+                    {item.mode.map((m) => (
+                      <ModeBadge key={m} mode={m} />
+                    ))}
+                  </div>
                 </div>
                 <p style={{
                   fontSize: '16px',
