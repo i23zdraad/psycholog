@@ -57,6 +57,8 @@ const courses = [
   'Training in advanced family mediation – The Institute for Study of Conflict Transformation',
   'Provázení obtížnými rozhovory – transformativní přístup, Brain Play',
   'Mediace – alternativní řešení interpersonálních konfliktů, ARK Consulting Bratislava',
+  'Kurzy k diagnostickým metodám',
+
 ]
 
 /*
@@ -310,7 +312,7 @@ export default function Experience() {
           </CategoryCard>
 
           <CategoryCard
-            title="Kurzy k diagnostickým metodám"
+            title="Kurzy"
             area="exp-area-courses"
             delay={0.3}
             listClassName="exp-courses-list"
